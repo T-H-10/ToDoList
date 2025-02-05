@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using TodoApi;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<ToDoDbContext>();
