@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using TodoApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +7,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
-// if(app.Environment.IsDevelopment()){
+if(app.Environment.IsDevelopment()){
     app.UseSwagger();
     app.UseSwaggerUI();
-// }
+}
 app.MapGet("/items",async (ToDoDbContext dbContext) =>
 {
     var items=await dbContext.Items.ToListAsync();
@@ -49,5 +47,4 @@ app.UseCors(builder=>{
             .AllowAnyMethod()
             .AllowAnyHeader();
 });
-app.MapGet("/",()=>"ToDo-List Server API is running...");
 app.Run();
