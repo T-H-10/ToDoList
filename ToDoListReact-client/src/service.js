@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 // const apiUrl = "http://localhost:5235/items"
-axios.defaults.baseURL = "http://localhost:5235";
+// axios.defaults.baseURL = "http://localhost:5235";
+axios.defaults.baseURL=process.env.API_URL;
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 axios.interceptors.response.use(
   response => response,
   error => {
